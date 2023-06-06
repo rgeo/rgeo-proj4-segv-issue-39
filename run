@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+ENV["FIX"] = "1" if ARGV[0] == "fix"
+system("ruby extconf.rb && make && ruby repro.rb && git clean -qfX")

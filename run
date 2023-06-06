@@ -1,4 +1,8 @@
 #!/usr/bin/env ruby
 
-ENV["FIX"] = "1" if ARGV[0] == "fix"
-system("ruby extconf.rb && make && ruby repro.rb && git clean -qfX")
+if ARGV[0] && (ARGV[0] != "fix" || ARGV[1])
+  system("less README.md")
+else
+  ENV["FIX"] = "1" if ARGV[0] == "fix"
+  system("ruby extconf.rb && make && ruby repro.rb && git clean -qfX")
+end
